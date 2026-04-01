@@ -11,25 +11,30 @@ if (isset($_POST['login'])) {
     $password = $_POST['password']; // Gunakan md5($_POST['password']) jika di DB di-hash
 
     // Pastikan variabel koneksi ($koneksi) sesuai dengan di file koneksi.php
-    $query = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$username' AND password='$password'");
+    $query = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$username'");
     
-    if (mysqli_num_rows($query) > 0) {
-        $data = mysqli_fetch_assoc($query);
+if(mysqli_num_rows($query) > 0){
+    $data = mysqli_fetch_assoc($query);
+
+    if(password_verify($password, $data['password'])){
         
         $_SESSION['username'] = $data['username'];
         $_SESSION['role'] = $data['role'];
 
-        // Pengalihan berdasarkan role
         if ($data['role'] == "admin") {
             header("location:dash_admin.php");
         } else {
             header("location:dash_kasir.php");
         }
         exit();
+
     } else {
-        // Jika gagal, isi variabel error untuk ditampilkan di bawah
-        $error_message = "Username atau password salah!";
+        $error_message = "Password salah!";
     }
+
+} else {
+    $error_message = "Username tidak ditemukan!";
+}
 }
 ?>
 
