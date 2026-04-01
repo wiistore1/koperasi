@@ -8,24 +8,24 @@ if(isset($_POST['daftar'])){
     $konfirmasi = $_POST['konfirmasi'];
     $role = $_POST['role'];
 
+   
     // Validasi: Cek apakah password dan konfirmasi cocok
-    if($password != $konfirmasi){
-        echo "<script>alert('Password tidak sama');</script>";
-    } else {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-    // CEK USERNAME SUDAH ADA ATAU BELUM
+if($password != $konfirmasi){
+    echo "<script>alert('Password tidak sama');</script>";
+} else {
+
+    // CEK USERNAME
     $cek = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$username'");
 
     if(mysqli_num_rows($cek) > 0){
-    echo "<script>alert('Username sudah digunakan!');</script>";
+        echo "<script>alert('Username sudah digunakan!');</script>";
     } else {
 
-    // HASH PASSWORD DULU
-    $password = password_hash($password, PASSWORD_DEFAULT);
+        // HASH SEKALI SAJA (INI YANG BENAR)
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Query INSERT
-    $query = "INSERT INTO users (username, password, role)
-              VALUES ('$username', '$password', '$role')";
+        $query = "INSERT INTO users (username, password, role)
+                  VALUES ('$username', '$password', '$role')";
 
     $simpan = mysqli_query($koneksi, $query);
 
