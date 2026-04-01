@@ -12,6 +12,6 @@ nama kelompok :
                 
                 5. DWI NUR AZILA (E31252447) dengan Akun (DwiNurAzila)
                 
-                6. RAMDHAN ABDILLAH HANIF (E31252515) dengan Akun ()
+                6. RAMDHAN ABDILLAH HANIF (E31252515) dengan Akun (RamdhanAbdillahHanif-22)
                 
     
