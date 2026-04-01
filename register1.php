@@ -19,7 +19,7 @@ if(isset($_POST['daftar'])){
         $simpan = mysqli_query($koneksi, $query);
 
         if($simpan) {
-            echo "<script>alert('Register berhasil'); window.location='login.php';</script>";
+            echo "<script>alert('Register berhasil'); window.location='login1.php';</script>";
         } else {
             echo "<script>alert('Gagal mendaftar: " . mysqli_error($koneksi) . "');</script>";
         }
@@ -52,7 +52,7 @@ if(isset($_POST['daftar'])){
     </form>
 
     <div class="text-center mt-3">
-        <a href="login.php">Kembali ke Login</a>
+        <a href="login1.php">Kembali ke Login</a>
     </div>
 </div>
 

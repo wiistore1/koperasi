@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if($_SESSION['role'] != "kasir"){
+    echo "<script>alert('Akses ditolak'); window.location='login1.php';</script>";
+    exit();
+}
+?>
+
+<script>
+alert("Selamat Datang Kasir! 👑");
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +33,7 @@
 
     <div class="ms-auto">
         <span>User</span>
-        <button class="btn btn-outline-dark btn-sm">Logout</button>
+        <a href="logout.php" class="btn btn-outline-dark btn-sm">Logout</a>
     </div>
 </nav>
 
